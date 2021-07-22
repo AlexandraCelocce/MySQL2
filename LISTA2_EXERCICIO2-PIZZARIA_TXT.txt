@@ -1,0 +1,45 @@
+create database db_pizzaria_legal;
+
+use db_pizzaria_legal;
+
+create table tb_categoria(
+    id bigint auto_increment,
+    preço float not null,
+    tipo varchar (50),
+    
+    primary key (id)
+);
+
+insert tb_categoria (preço, tipo) values (40.00, "Doce");
+insert tb_categoria (preço, tipo) values (36.00, "Salgada");
+insert tb_categoria (preço, tipo) values (42.00, "Vegana");
+insert tb_categoria (preço, tipo) values (30.00, "Promocional");
+
+select * from tb_categoria;
+
+create table tb_pizza(
+       id bigint auto_increment,
+       nome varchar (50),
+       tamanho varchar (50),
+       sabor varchar (50),
+       id_pizza bigint not null,
+       primary key (id),
+       foreign key (id_pizza) references tb_categoria (id)
+);
+
+
+select * from tb_pizza;
+
+insert into tb_pizza (nome, tamanho, sabor, id_pizza) values ("Nordestina", "Grande", "carne seca com catupiry", 2)
+insert into tb_pizza (nome, tamanho, sabor, id_pizza) values ("Prestigio", "Grande", "Chocolate preto com coco", 1)
+insert into tb_pizza (nome, tamanho, sabor, id_pizza) values ("Sem culpa", "Grande", "Brocolis com queijo de soja", 3)
+insert into tb_pizza (nome, tamanho, sabor, id_pizza) values ("Mussarela tradicional", "Grande", "Queijo mussarela e tomate", 4)
+insert into tb_pizza (nome, tamanho, sabor, id_pizza) values ("Calabresa tradicional", "Grande", "Calabresa e cebola", 4)
+insert into tb_pizza (nome, tamanho, sabor, id_pizza) values ("M&Ms", "Grande", "Chocolate preto e m&ms", 1)
+
+
+select preço, tipo from tb_categoria where preço> 45;
+
+select preço, tipo from tb_categoria where preço between 29 and 60;
+
+select sabor from tb_pizza where sabor like "%C%";

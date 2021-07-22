@@ -1,0 +1,49 @@
+create database db_construindo_a_nossa_vida;
+
+use db_construindo_a_nossa_vida;
+
+create table tb_categoria ( id bigint (6) auto_increment ,
+marca varchar (50) not null,
+tamanho varchar (50) not null,
+categoria varchar (50) not null,
+primary key (id)
+);
+
+insert tb_categoria (marca, tamanho, categoria) values ("Amanco", " p/metro", "Canos");
+insert tb_categoria (marca, tamanho, categoria) values ("Metalosa", "1m50", "Pias");
+insert tb_categoria (marca, tamanho, categoria) values ("Alumbra", "M", "Acessorios");
+insert tb_categoria (marca, tamanho, categoria) values ("Philco", "Padrao", "Cooktops");
+
+select * from tb_categoria;
+
+create table tb_produto ( id bigint (8) auto_increment ,
+  modelo varchar (20),
+  preco double, 
+  estoque boolean,
+  id_produto bigint not null,
+  primary key (id),
+  foreign key (id_produto) references tb_categoria (id)
+);
+
+
+select * from tb_produto;
+
+insert tb_produto (modelo, preco, estoque, id_produto) values ("PVC interno", 36.00, true, 1);
+insert tb_produto (modelo, preco, estoque, id_produto) values ("PVC Externo", 45.00, true, 1);
+insert tb_produto (modelo, preco, estoque, id_produto) values ("Em pedra", 529.99, true, 2);
+insert tb_produto (modelo, preco, estoque, id_produto) values ("Quadro de luz", 9.99, true, 3);
+insert tb_produto (modelo, preco, estoque, id_produto) values ("Em vidro temperado", 450.00, true, 4);
+
+
+select * from tb_produto;
+
+
+select preco, modelo from tb_produto where preco > 50;
+
+select modelo, preco from tb_produto where preco between 3 and 50;
+
+select * from tb_produto where modelo like '%C%' ;
+
+select * from tb_categoria inner join tb_produto on tb_categoria.id = tb_produto.id;
+
+
