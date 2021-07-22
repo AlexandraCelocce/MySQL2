@@ -1,0 +1,58 @@
+create database db_empresarh
+
+use db_empresarh; 
+create table tb_cadastro ( id bigint (6) auto_increment ,
+nome varchar (50) not null,
+idade int ,
+salario double,
+funcao varchar (25),
+ativo boolean,
+primary key (id)
+);
+
+
+select * from tb_cadastro
+
+insert into tb_cadastro (nome, idade, salario, funcao, ativo) values ("Marcelo Alves", 25, 2500, "Estoquista", true)
+insert into tb_cadastro (nome, idade, salario, funcao, ativo) values ("Renata Sousa", 32, 1300, "Estagiaria", true)
+insert into tb_cadastro (nome, idade, salario, funcao, ativo) values ("Luan Rodrigues Santos", 22, 1400, "Repositor", true)
+insert into tb_cadastro (nome, idade, salario, funcao, ativo) values ("Elisa Franco", 26, 1450, "Recepcionista", true)
+insert into tb_cadastro (nome, idade, salario, funcao, ativo) values ("José Mario Castro", 33, 2050, "Gerente", true)
+
+select * from tb_cadastro
+
+1	Marcelo Alves	        25	2500	Estoquista      1
+2	Renata Sousa	        32	1300	Estagiaria      1
+3	Luan Rodrigues Santos	22	1400	Repositor	1
+4	Elisa Franco	        26      1450    Recepcionista	1
+5	José Mario Castro	33	2050	Gerente	        1
+
+
+select salario from tb_cadastro
+where salario < 2000
+1300
+1400
+1450
+
+
+
+select salario from tb_cadastro
+where salario > 2000
+
+select preco from tb_produtos
+where preco > 2000
+2500
+2050
+
+update tb_cadastro set funcao = "Administrador(a)" where id = 2 ;
+
+select * from tb_cadastro
+
+1	Marcelo Alves	        25	2500	Estoquista	 1
+2	Renata Sousa	        32      1300	Administrador(a) 1
+3	Luan Rodrigues Santos	22	1400	Repositor	 1
+4	Elisa Franco	        26	1450	Recepcionista	 1
+5	José Mario Castro	33	2050	Gerente	         1
+					
+
+
